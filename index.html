@@ -3,14 +3,43 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>enjoei - teste front-end</title>
     <link rel="icon" type="image/x-icon" href="https://www.enjoei.com.br/favicon.ico" />
-
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
-    <script>$.mockjax({ url: /.*\/api\/newsletter/, responseText: { status: 'success', message: 'email cadastrado com sucesso' }});</script>
+    <script src="js/bootstrap.min.js"></script>
+   
 
     <style>
+      @font-face {
+          font-family: 'ProximaNovaSB';
+          src: url('proxima-nova/proxima-semibold.eot'); /* IE9 Compat Modes */
+          src: url('proxima-nova/proxima-semibold.eot'),
+               url('proxima-nova/proxima-semibold.woff2') format('woff2'), /* Super Modern Browsers */
+               url('proxima-nova/proxima-semibold.woff') format('woff'), /* Pretty Modern Browsers */
+               url('proxima-nova/proxima-semibold.ttf')  format('truetype'); /* Safari, Android, iOS */
+      }
+
+      @font-face {
+              font-family: 'ProximaNovaRG';
+              src: url('proxima-nova/proxima-regular.eot'); /* IE9 Compat Modes */
+              src: url('proxima-nova/proxima-regular.eot'),
+                   url('proxima-nova/proxima-regular.woff2') format('woff2'), /* Super Modern Browsers */
+                   url('proxima-nova/proxima-regular.woff') format('woff'), /* Pretty Modern Browsers */
+                   url('proxima-nova/proxima-regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+      }
+
+      @font-face {
+              font-family: 'ProximaNovaBD';
+              src: url('proxima-nova/proxima-bold.eot'); /* IE9 Compat Modes */
+              src: url('proxima-nova/proxima-bold.eot'),
+                   url('proxima-nova/proxima-bold.woff2') format('woff2'), /* Super Modern Browsers */
+                   url('proxima-nova/proxima-bold.woff') format('woff'), /* Pretty Modern Browsers */
+                   url('proxima-nova/proxima-bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+      }
+
       .c-instructions {
         display: block;
         width: 85%;
@@ -42,89 +71,186 @@
       a.btn{
         color:#555555;
         text-decoration: none;
+        padding: 0;
+        border: 0;
       }
 
-.modal-wrapper{
-  width:100%;
-  height:100%;
-  position:fixed;
-  top:0; left:0;
-  background:rgba(255,257,153,0.75);
-  visibility:hidden;
-  opacity:0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
+      .modal-wrapper{
+        width:100%;
+        height:100%;
+        position:fixed;
+        top:0; left:0;
+        background:rgba(57,55,53,0.6);
+        visibility:hidden;
+        opacity:0;
+        -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+      }
 
-.modal-wrapper.open{
-  opacity:1;
-  visibility:visible;
-}
+      .modal-wrapper.open{
+        opacity:1;
+        visibility:visible;
+      }
 
-.modal{
-  width:600px;
-  height:400px;
-  display:block;
-  margin:50% 0 0 -300px;
-  position:relative;
-  top:50%; left:50%;
-  background:#fff;
-  opacity:0;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
+      .modal{
+        width:50%;
+        height:auto;
+        display:block;
+        margin:auto;
+        position:relative;
+        top:50%;
+        background:#ea5653;
+        opacity:0;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        border-radius: 10px;
+      }
 
-.modal-wrapper.open .modal{
-  margin-top:-200px;
-  opacity:1;
-}
+      .modal-wrapper.open .modal{
+        margin-top:-200px;
+        opacity:1;
+      }
 
-.head{
-  width:90%;
-  height:32px;
-  padding:1.5em 5%;
-  overflow:hidden;
-  background:#01bce5;
-}
+      .head{
+        width:100%;
+        height:32px;
+        padding: 10px;
+        overflow:hidden;
+      }
 
-.btn-close{
-  width:32px;
-  height:32px;
-  display:block;
-  float:right;
-}
+      .btn-close{
+        width:22px;
+        height:22px;
+        display:block;
+        float:right;
+      }
 
-.btn-close::before, .btn-close::after{
-  content:'';
-  width:32px;
-  height:6px;
-  display:block;
-  background:#fff;
-}
+      .btn-close::before, .btn-close::after{
+        content:'';
+        width:20px;
+        height:3px;
+        display:block;
+        background:#fff;
+      }
 
-.btn-close::before{
-  margin-top:12px;
-  -webkit-transform:rotate(45deg);
-  -moz-transform:rotate(45deg);
-  -o-transform:rotate(45deg);
-  transform:rotate(45deg);
-}
+      .btn-close::before{
+        margin-top:12px;
+        -webkit-transform:rotate(45deg);
+        -moz-transform:rotate(45deg);
+        -o-transform:rotate(45deg);
+        transform:rotate(45deg);
+      }
 
-.btn-close::after{
-  margin-top:-6px;
-  -webkit-transform:rotate(-45deg);
-  -moz-transform:rotate(-45deg);
-  -o-transform:rotate(-45deg);
-  transform:rotate(-45deg);
-}
+      .btn-close::after{
+        margin-top:-3px;
+        -webkit-transform:rotate(-45deg);
+        -moz-transform:rotate(-45deg);
+        -o-transform:rotate(-45deg);
+        transform:rotate(-45deg);
+      }
 
-.content{
-  padding:5%;
-}
+      .content{
+       padding: 0 15px;
+      }
+
+      .content h3 {
+        text-transform: uppercase;
+        color:#fff;
+        text-align: center;
+        font-family: 'ProximaNovaSB';
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .content p {
+        font-family: 'ProximaNovaRG';
+        color:#fff;
+        font-size: 18px;
+        text-align: center;
+        margin: auto;
+        width: 65%;
+        margin-bottom: 30px;
+      }
+
+       .content img {
+        display: block;
+        margin: 0 auto;
+        width: 70%;
+
+      }
+
+      label {
+        text-transform: uppercase;
+        color:#fff;
+        font-family: 'ProximaNovaRG';
+        font-size: 12px;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        background: #fff;
+        box-shadow: none;
+        border: 0;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        width: 100%;
+      }
+
+      input[type=submit] {
+        color:#f77274;
+        font-family: 'ProximaNovaBD';
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+      }
+
+
+      @media (max-width: 768px) {
+        .modal {
+          width: 80%;
+          top: 30%;
+          height: 520px;
+        }
+        .content {display: table;}
+        .content img {width: auto;}
+        .content p {width: 80%;}
+        .content .one {
+          display: table-footer-group;
+        }
+        .news {    
+          width: 75%;
+          margin: auto;
+        }
+        
+      }
+
+       @media (max-width: 375px) {
+        .modal {
+          top: 40%;
+          width: 90%;
+          height: 440px;
+        }
+
+        .content p {
+          width: 100%;
+          font-size: 14px;
+        }
+
+        .news {width: 100%;}
+
+        .content img {display: none;}
+      }
+
+    
+
+    
     </style>
   </head>
 
@@ -170,6 +296,22 @@
             <a class="btn-close trigger" href="javascript:;"></a>
           </div>
           <div class="content">
+            <h3>Enjunews</h3>
+            <p>receba novidades do site mais legal do brasiô, coloca seu nome e email ai embaixo e manda bala :)</p>
+            
+            <div class="col-md-4 one">
+              <img src="gato.png" alt="">
+            </div>
+            <div class="col-md-8 two">
+              <form class="news">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="name">
+                 <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <input type="submit" id="enviar" value="quero receber novidades">
+              </form>
+           
+           </div>
           </div>
         </div>
       </div>
@@ -188,28 +330,35 @@
      
     </script>
 
+
     <script>
 
-    $.mockjax(function(settings) {
-      if ( settings.dataType == 'json' ) {
-        return {
-          dataType: 'json',
-          proxy: 'test.json'
-        };
-      }
-      return false;
-    });
-
-    // Normal ajax request in your application
-    $.ajax({
-      url: '/some/webservice',
-      dataType: 'json',
-      success: function(json) {
-        alert('You said: ' + json.say);
-      }
-    });
+        $('#enviar').click(function (e) {
+    e.preventDefault();
+    var emailval = $('input#email').val();
+    var nameval = $('input#name').val();
+    console.log(emailval,nameval);
+    if (emailval,nameval !== "") {
+        $.mockjax({
+            url: /.*\/api\/newsletter/, 
+            type: 'POST', 
+            dataType: 'json',
+            data: {
+                name: nameval
+                email: emailval }})
+            },
+            status: 'success', 
+            success: function (data) {
+                console.log(data);
+                $('.modal-wrapper').toggleClass('close');
+            }
+            message: 'email cadastrado com sucesso'
+        });
+    } 
+});
 
     </script>
 
+   
   </body>
 </html>
